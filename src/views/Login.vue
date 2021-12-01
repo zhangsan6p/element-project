@@ -22,7 +22,8 @@
             <el-input v-model="userForm.code"
                       placeholder="请输入验证码"></el-input>
           </el-col>
-          <el-col :span="8"> <!-- <img class="codeimg"> -->
+          <el-col :span
+                      ="8"> <!-- <img class="codeimg"> -->
             <el-input  v-model="userForm.code" placeholder="请输入验证码" readonly></el-input>
           </el-col>
         </el-row>
@@ -48,7 +49,7 @@ export default {
     return {
       userForm:
           {
-            username: "111",
+            username: "",
             password: "",
             code: "",
           },

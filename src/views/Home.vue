@@ -24,7 +24,10 @@
         <MenuBar></MenuBar>
       </el-aside>
       <el-container>
-        <el-main>Main</el-main>
+        <el-main style="padding: 0;">
+          <li class="arrow-icon" :class="[isCollapse ? 'el-icon-s-unfold' : ' el-icon-s-fold']" @click="iconClick"></li>
+          <Tabs></Tabs>
+        </el-main>
         <el-footer
             style="
             display: flex;
@@ -34,7 +37,7 @@
             height: 50px;
             color: #fff;
           "
-        >Copyright © 2020 - 2021 . 秘咖学堂.All Rights Reserved</el-footer
+        >Copyright © 2020 - 2021 . 百旺.All Rights Reserved</el-footer
         >
       </el-container>
     </el-container>
@@ -43,12 +46,24 @@
 
 <script>
 import MenuBar from "@/components/MenuBar";
+import {mapState} from 'vuex'
+import {mapMutations} from 'vuex'
+import Tabs from "@/components/Tabs";
+
 var $vueIndex;
 export default {
   data() {
     return {
       date: "",
     };
+  },
+  computed:{
+    ...mapState(
+        {
+          isCollapse:
+              state => state.MenuStore.isCollapse
+        }
+    )
   },
   mounted() {
     $vueIndex = this;
@@ -58,6 +73,11 @@ export default {
     }, 1000);
   },
   methods: {
+    ...mapMutations(
+        {
+          iconClick: "setOpenOrClose"
+        }
+    ),
     showTime() {
       var week = new Array(
           "星期日",
@@ -93,12 +113,24 @@ export default {
     },
   },
   components:{
-    MenuBar
+    MenuBar,
+    Tabs
   }
 };
 </script>
 
 <style scoped>
+.arrow-icon {
+  float: left;
+  background: #eaedf1;
+  border: 1px solid transparent;
+  font-size: 23px;
+  height: 39px;
+  line-height: 39px!important;
+  width: 40px;
+  text-align: center;
+}
+
 .home {
   height: 100vh;
 }

@@ -62,7 +62,8 @@ rules 表单的验证规则
 
 ![](picture/img_2.png)
 
-
+#### 第5讲 标签页设置流程图
+![](picture/imgbiaojian.png)
 
 
 
